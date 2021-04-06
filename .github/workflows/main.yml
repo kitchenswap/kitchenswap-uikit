@@ -40,7 +40,8 @@ jobs:
           file_path: ./data/b.json
       - name: Pushes to another repository
         id: push_directory
-        uses: cpina/github-action-push-to-another-repository #@cp_instead_of_deleting
+        # @cp_instead_of_deleting
+        uses: cpina/github-action-push-to-another-repository
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
