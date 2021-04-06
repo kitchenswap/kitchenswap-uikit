@@ -1,3 +1,4 @@
+
 name: Build and Deploy
 on:
   push:
@@ -12,9 +13,28 @@ jobs:
       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           npm install
-        # npm run build
+         # npm run build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
+      - name: Deploy A
+        if: hashFiles('a.json') != ''
+        uses: exuanbo/actions-deploy-gist@v1
+        with:
+          token: ${{ secrets.GIST_TOKEN }}
+          gist_id: 5401a6f4c737ad12dd59eda96966f195
+          gist_file_name: a.json
+          file_path: ./a.json
+      - name: Create B
+        run: |
+          npm run new-logos
+      - name: Deploy B
+        if: hashFiles('b.json') != ''
+        uses: exuanbo/actions-deploy-gist@v1
+        with:
+          token: ${{ secrets.GIST_TOKEN }}
+          gist_id: 5401a6f4c737ad12dd59eda96966f195
+          gist_file_name: b.json
+          file_path: ./b.json
