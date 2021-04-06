@@ -39,14 +39,11 @@ jobs:
           gist_file_name: b.json
           file_path: ./data/b.json
       - name: Pushes to another repository
-        id: push_directory
-        # @cp_instead_of_deleting
-        uses: cpina/github-action-push-to-another-repository@master
+        uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'src'
-          destination-github-username: kitchenswap
-          destination-repository-name: kitchenswap-data
-          user-email: hanna.waffle@gmail.com
-          target-branch: main
+          source_file: 'a.json'
+          destination_repo: 'kitchenswap/kitchenswap-data'
+          user_email: 'hanna.waffle@gmail.com'
+          user_name: 'hannawaffle'
