@@ -44,7 +44,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: data
+          source-directory: ./data
           destination-github-username: kitchenswap
           destination-repository-name: kitchenswap-data
           user-email: hanna.waffle@gmail.com
