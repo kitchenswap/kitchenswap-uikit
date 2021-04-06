@@ -48,3 +48,4 @@ jobs:
           destination-github-username: kitchenswap
           destination-repository-name: kitchenswap-data
           user-email: hanna.waffle@gmail.com
+          target-branch: main
