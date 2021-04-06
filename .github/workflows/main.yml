@@ -41,7 +41,7 @@ jobs:
       - name: Pushes to another repository
         id: push_directory
         # @cp_instead_of_deleting
-        uses: cpina/github-action-push-to-another-repository
+        uses: cpina/github-action-push-to-another-repository@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
