@@ -20,21 +20,31 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
       - name: Deploy A
-        if: hashFiles('a.json') != ''
+        if: hashFiles('data/a.json') != ''
         uses: exuanbo/actions-deploy-gist@v1
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gist_id: 5401a6f4c737ad12dd59eda96966f195
-          gist_file_name: a.json
-          file_path: ./a.json
+          gist_file_name: .json
+          file_path: ./data/a.json
       - name: Create B
         run: |
           npm run new-logos
       - name: Deploy B
-        if: hashFiles('b.json') != ''
+        if: hashFiles('data/b.json') != ''
         uses: exuanbo/actions-deploy-gist@v1
         with:
           token: ${{ secrets.GIST_TOKEN }}
           gist_id: 5401a6f4c737ad12dd59eda96966f195
           gist_file_name: b.json
-          file_path: ./b.json
+          file_path: ./data/b.json
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@cp_instead_of_deleting
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'data'
+          destination-github-username: 'kitchenswap'
+          destination-repository-name: 'kitchenswap-data'
+          user-email: hanna.waffle@gmail.com
