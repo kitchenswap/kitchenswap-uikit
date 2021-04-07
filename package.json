@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "new-logos": "echo 'b' > b.json"
   },
   "repository": {
     "type": "git",
